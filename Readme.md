@@ -1,60 +1,72 @@
-# nativewind for expo
+# Setting Up NativeWind with Expo and Tailwind CSS
 
-`````bash
+## Step 1: Create Expo App
+
+First, create your Expo app:
+
+```bash
 npx create-expo-app my-app
-
 cd my-app
+```
+
+## Step 2: Install Dependencies
+
+Install NativeWind and Tailwind CSS:
+
+```bash
 yarn add nativewind
-yarn add --dev tailwindcss
+yarn add --dev tailwindcss@^3.3.2
+```
+
+Initialize Tailwind CSS:
+
+```bash
 npx tailwindcss init
-```code
+```
+
+## Step 3: Configure Tailwind CSS
+
+Modify your `tailwind.config.js` to include paths to your React Native files:
+
+```javascript
 // tailwind.config.js
 
 module.exports = {
-content: ["./App.{js,jsx,ts,tsx}", "./<custom directory>/**/*.{js,jsx,ts,tsx}"],
+  content: ["./App.{js,jsx,ts,tsx}", "./<custom directory>/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [],
-}
-```code
+};
+```
+
+## Step 4: Configure Babel
+
+Update your `babel.config.js` to include the NativeWind Babel plugin:
+
+```javascript
 // babel.config.js
 module.exports = function (api) {
   api.cache(true);
   return {
     presets: ["babel-preset-expo"],
-   plugins: ["nativewind/babel"],
+    plugins: ["nativewind/babel"],
   };
 };
-
 ```
 
-```
+## Step 5: Install PostCSS and Configure Webpack
 
-```
-
-# npm install tailwindcss@3.3.2 --save-dev
+Install PostCSS and necessary loaders:
 
 ```bash
-yarn remove nativewind
-yarn remove tailwindcss
 yarn add postcss@8.4.23
-yarn add --dev tailwindcss@3.3.2
-yarn add nativewind
-
-yarn add nativewind
-yarn add --dev tailwindcss@3.3.2
-```
-
-```bash
 npm i -D postcss-loader@4.2.0 @expo/webpack-config
 ```
 
-<!-- # npm i -D postcss-loader@4.2.0 @expo/webpack-config -->
+Update your `webpack.config.js` to include PostCSS loader:
 
-````bash
-webpack.config.
-```code
+```javascript
 // webpack.config.js
 const createExpoWebpackConfigAsync = require("@expo/webpack-config");
 
@@ -76,8 +88,14 @@ module.exports = async function (env, argv) {
 
   return config;
 };
-`````
-
 ```
 
+## Step 6: Finalize Installation
+
+Finalize your installation by running:
+
+```bash
+yarn start
 ```
+
+Your Expo app with NativeWind and Tailwind CSS should now be up and running!
