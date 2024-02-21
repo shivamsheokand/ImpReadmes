@@ -20,6 +20,7 @@ cd myNewProject
 
 ```bash
 npx expo prebuild
+npx expo prebuild --platform ios
 ```
 
 create wareexpo project.
