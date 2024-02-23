@@ -156,8 +156,11 @@ cd my-app
 Install NativeWind and Tailwind CSS:
 
 ```bash
+yarn remove nativewind
+yarn remove tailwindcss
+yarn add postcss@8.4.23
+yarn add --dev tailwindcss@3.3.2
 yarn add nativewind
-yarn add --dev tailwindcss@^3.3.2
 ```
 
 Initialize Tailwind CSS:
